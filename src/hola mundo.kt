@@ -75,4 +75,61 @@ fun main (args: Array<String> ){
 
     cade = "Esto es kotlin"
     println("Cadena: ${cade.substring(0..13)}")
+    /**
+     * 7. Ciclos en kotlin (For, while y do-while)
+     */
+    //Ciclos
+    for(i in 1..10){
+        println(i)
+    }
+    for(i in 1..10 step 2){
+        println(i)
+    }
+    for(i in 10 downTo 1){
+        println(i)
+    }
+    for(i in 10 downTo 1 step 2 ){
+        println(i)
+    }
+    var nombres = listOf("Luis","David","Lopez","Valdes")
+    for (mostrar in nombres){
+        println(mostrar)
+    }
+    var n =1
+    while (n< 10){
+        println(n)
+        n++
+    }
+    n=1
+    do {
+        println(n)
+        n++
+    }while (n<=10)
+    /**
+     * 8.	Clases, Objetos,manejo de Nulos y Funciones con expresiones
+     */
+    //Objeto de la clase Estudiante
+    var e1 = Estudiante()
+    println("Name: ${e1.nombre}")
+    println("No Control: ${e1.noControl}")
+    e1.asignar("David", 1)
+    e1.imprimir()
+    e1.asignar(nC = 2,n = "Luis")
+    e1.imprimir()
+
+    data class Customer(val name: String, val email: String)
+    var customer = Customer("David","correo@dominio.com")
+    println(customer.email)
+    //manejo de nulos o null-safety
+    var nulo : String? = null //cuando un valor puede ser nulo se tiene que marcar explicitamente con el operador "?"
+    fun obtenerTamañoString(objeto : Any): Int? {
+        if (objeto is String) { // el operador "is" checa si la expresión es instancia del tipo, es decir, si es un String
+            // objeto se "castea" automaticamente a String
+            return objeto.length
+        }
+        // objeto sigue siendo de tipo "Any" fuera de la comprobación del "if"
+        return null
+    }
+    println("El tamaño es de ${obtenerTamañoString("cinco")}")
+
 }
