@@ -13,4 +13,5 @@ class Estudiante {
         nombre = n
         noControl = nC
     }
+
 }

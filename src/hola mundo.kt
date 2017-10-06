@@ -131,5 +131,62 @@ fun main (args: Array<String> ){
         return null
     }
     println("El tamaño es de ${obtenerTamañoString("cinco")}")
+    //funciones con expresiones
+    var c =3
+    var d=5
+    fun suma(c : Int, d:Int):Int{
+        return c+d
+    }
+    println("Suma uno: ${suma(c,d)}")
 
+    fun suma2(c: Int,d:Int): Int = c+d
+    println("Suma dos: ${suma2(c,d)}")
+
+    fun printSuma(c:Int,d:Int) : Unit{
+        println("La suma de $c y $d es ${c+d}")
+    }
+    printSuma(c,d)
+
+    fun printSumaDos(c:Int,d:Int){
+        println("La suma de $c y $d es ${c+d}")
+    }
+    printSumaDos(c,d)
+
+    /**
+     * 9. Funciones Infix y Extension
+     */
+    println("Función Extensión")
+    e1.mostrar()
+
+    var e2 = Estudiante()
+    e2.asignar("David",1)
+    println("Función Infija")
+    var suma = e1 sumaNoControl  e2
+    println("Suma Infija: ${suma}")
+
+    /**
+     * 10. Sobrecarga de operadores
+     */
+    var e3 = e1 + e2
+    e3.imprimir()
 }
+
+//agrega funciones a la clase sin declararlas en ella y estas se comparta
+//como estaticas
+fun Estudiante.mostrar() {
+    println("Name: ${nombre}")
+    println("No Control: ${noControl}")
+}
+    //función infix
+    infix fun Estudiante.sumaNoControl( e : Estudiante): Int{
+        return e.noControl + this.noControl
+    }
+
+    operator fun  Estudiante.plus(e : Estudiante): Estudiante{
+        var nuevoEstudiante = Estudiante()
+        nuevoEstudiante.nombre = this.nombre + " " + e.nombre
+        nuevoEstudiante.noControl = this.noControl +  e.noControl
+
+        return nuevoEstudiante
+    }
+
