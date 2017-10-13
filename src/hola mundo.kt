@@ -159,34 +159,94 @@ fun main (args: Array<String> ){
     e1.mostrar()
 
     var e2 = Estudiante()
-    e2.asignar("David",1)
+    e2.asignar("David", 1)
     println("Función Infija")
-    var suma = e1 sumaNoControl  e2
-    println("Suma Infija: ${suma}")
+    var suma = e1 sumaNoControl e2
+    println("Suma infija ${suma}")
 
     /**
      * 10. Sobrecarga de operadores
      */
     var e3 = e1 + e2
     e3.imprimir()
-}
+    /**
+     * 11. Try-catch
+     */
+    var str:String = "Hola"
+    var cast:Int? = try{
+        //Integer.parseInt(int)
+        str.toInt()
+    }catch(e:NumberFormatException){
+        //throw IllegalArgumentException("No se puede")
+        null
+    }
+    println("El valor convertido es de: " + cast)
+    /**
+     * 12. Arreglos
+     */
+    var anotherArray : Array<Int> = arrayOf(1,2,3)
 
-//agrega funciones a la clase sin declararlas en ella y estas se comparta
-//como estaticas
-fun Estudiante.mostrar() {
+    var array = arrayOf(1,2,3,4,5)
+    var b = array[0]
+    println("El primer valor de b es: ${b}")
+    array[0] = 5
+    println("Posicion 0 = ${array[0]}")
+    b = array.get(2)
+    println("El segundo valor de b es: ${b}")
+    array.set(4,1)
+    println("Posicion 4 = ${array[4]}")
+
+    var arreglo = intArrayOf(1,2,3)
+    println(arreglo[0])
+
+    var cadenas = arrayOf("Uno","Dos","Tres")
+    var arreglos = Array(5,{i -> i*2})
+    println("ciclo que muestra contenido de un array")
+    for(i in arreglos.indices){
+        println(arreglos[i])
+    }
+    println("otra manera")
+    for(i in (0..arreglos.size-1)){
+        println(arreglos[i])
+    }
+    println("otra mas")
+    arreglos.forEach { a -> println(a) }
+
+    println("arreglo de arreglos")
+    var matriz = arrayOf(arrayOf(1,2,3),arrayOf(4,5,6), arrayOf(7,8,9))
+
+    for(i in matriz.indices){
+        for(j in matriz[i].indices) {
+            "${print(matriz[i][j])}"
+        }
+            println()
+    }
+
+    var miArreglo = arrayOf("Hola",1,2.3,4)
+    for(i in (0..miArreglo.size-1)){
+        println(miArreglo[i])
+    }
+    /**
+     * 13. Listas y Tree Maps
+     */
+
+}
+//función extensión
+fun Estudiante.mostrar(){
     println("Name: ${nombre}")
     println("No Control: ${noControl}")
 }
-    //función infix
-    infix fun Estudiante.sumaNoControl( e : Estudiante): Int{
-        return e.noControl + this.noControl
-    }
+//función infix
+infix fun Estudiante.sumaNoControl(e : Estudiante): Int{// un solo parametro
+    return e.noControl + this.noControl
+}
 
-    operator fun  Estudiante.plus(e : Estudiante): Estudiante{
-        var nuevoEstudiante = Estudiante()
-        nuevoEstudiante.nombre = this.nombre + " " + e.nombre
-        nuevoEstudiante.noControl = this.noControl +  e.noControl
+//sobrecarga de operadores
+operator fun Estudiante.plus(e : Estudiante): Estudiante{
+    var nuevoEstudiante = Estudiante()
+    nuevoEstudiante.nombre = this.nombre + " " + e.nombre
+    nuevoEstudiante.noControl = this.noControl + e.noControl
 
-        return nuevoEstudiante
+    return  nuevoEstudiante
     }
 
