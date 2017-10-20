@@ -4,7 +4,7 @@
 class Estudiante {
     var nombre: String = ""
     var noControl: Int = 0
-
+    constructor()
     fun imprimir(){
         println("Name: ${nombre}")
         println("No Control: ${noControl}")
@@ -14,4 +14,8 @@ class Estudiante {
         noControl = nC
     }
 
+    constructor(nombre2:String, noControl2:Int): this(){
+        this.nombre = nombre2
+        this.noControl = noControl2
+    }
 }

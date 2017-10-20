@@ -1,3 +1,5 @@
+import java.util.*
+
 fun main (args: Array<String> ){
     //mostrar mensaje
     println("Hola mundo")
@@ -143,12 +145,12 @@ fun main (args: Array<String> ){
     println("Suma dos: ${suma2(c,d)}")
 
     fun printSuma(c:Int,d:Int) : Unit{
-        println("La suma de $c y $d es ${c+d}")
+        println("La Kotlin.suma de $c y $d es ${c+d}")
     }
     printSuma(c,d)
 
     fun printSumaDos(c:Int,d:Int){
-        println("La suma de $c y $d es ${c+d}")
+        println("La Kotlin.suma de $c y $d es ${c+d}")
     }
     printSumaDos(c,d)
 
@@ -229,6 +231,16 @@ fun main (args: Array<String> ){
     /**
      * 13. Listas y Tree Maps
      */
+    //Listas
+    var list = listOf(11,12,13,14,15)
+    for ((i,x) in list.withIndex())
+        println(i.toString() + " " + x)
+    //Tree Maps
+    var tree = TreeMap<String,Int>()
+    tree["Refresco"] = 12
+    tree["Agua"] = 10
+    for ((producto,precio) in tree)
+        println("${producto} ${precio} ")
 
 }
 //función extensión
